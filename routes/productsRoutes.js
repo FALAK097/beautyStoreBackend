@@ -4,17 +4,7 @@ const db = require('../firebaseInit');
 
 router.post('/', async (req, res) => {
   try {
-    const {
-      title,
-      description,
-      imageUrl,
-      price,
-      weight,
-      quantity,
-      dimensions,
-      sku,
-      categoryId,
-    } = req.body;
+    const { title, description, imageUrl, price, weight, quantity } = req.body;
 
     const docRef = await db.collection('products').add({
       title,
@@ -23,9 +13,6 @@ router.post('/', async (req, res) => {
       price,
       weight,
       quantity,
-      dimensions,
-      sku,
-      categoryId,
     });
 
     res.status(201).json({ id: docRef.id });
@@ -52,17 +39,7 @@ router.get('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
-    const {
-      title,
-      description,
-      imageUrl,
-      price,
-      weight,
-      quantity,
-      dimensions,
-      sku,
-      categoryId,
-    } = req.body;
+    const { title, description, imageUrl, price, weight, quantity } = req.body;
     const { id } = req.params;
 
     const updateData = {};
@@ -72,9 +49,6 @@ router.put('/:id', async (req, res) => {
     if (price !== undefined) updateData.price = price;
     if (weight !== undefined) updateData.weight = weight;
     if (quantity !== undefined) updateData.quantity = quantity;
-    if (dimensions !== undefined) updateData.dimensions = dimensions;
-    if (sku !== undefined) updateData.sku = sku;
-    if (categoryId !== undefined) updateData.categoryId = categoryId;
 
     await db.collection('products').doc(id).update(updateData);
 
