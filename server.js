@@ -3,7 +3,7 @@ const cors = require('cors');
 
 const categoriesRoutes = require('./routes/categoriesRoutes');
 const productsRoutes = require('./routes/productsRoutes');
-const uploadsRoutes = require('./routes/uploadsRoutes');
+
 const { handleError, handleNotFound } = require('./errors');
 
 const app = express();
@@ -13,7 +13,6 @@ app.use(cors('*'));
 
 app.use('/categories', categoriesRoutes);
 app.use('/products', productsRoutes);
-app.use('/uploads', uploadsRoutes);
 
 app.use(handleNotFound);
 app.use(handleError);
