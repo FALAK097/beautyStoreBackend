@@ -1,4 +1,8 @@
 .env
-key.json
 node_modules/
 uploads/
+functions/
+.firebase/
+.firebaserc
+firebase.json
+public/
